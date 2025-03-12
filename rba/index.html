@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Renewal by Andersen</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.full.min.js"></script>
+</head>
+<body>
+    <header class="header">
+        <h1>Get a Free Window Replacement Quote Today!</h1>
+    </header>
+
+    <section class="offer">
+        <img src="1.png" alt="Renewal by Andersen Logo">
+        <div class="offer-details">
+            <button>Click Now ➤➤</button>
+        </div>
+    </section>
+
+    <section class="info">
+        <p id="paragraph-info">
+            Renewal by Andersen is not affiliated with any government grant or free window programs.
+            All projects come at a cost to the consumer.
+        </p>
+        <p>
+            What if there was a way to replace your windows with premium,
+            energy-efficient ones at a fraction of the cost—and it was revealed by a home improvement expert in the most unexpected way?
+        </p>
+        <p>
+            You'll discover exactly how this exclusive limited-time deal works and why so
+            many homeowners are making the switch to Renewal by Andersen before the
+            offer expires.
+        </p>
+        <button>Don't Miss Out – This Offer Ends Soon! ➤➤</button>
+    </section>
+
+    <section class="email-signup">
+        <p>
+            This site is not affiliated with any government grant or free window programs.
+            All window replacement projects come at a cost to the consumer.
+        </p>
+        <p id="paragraph-email">Add your email for latest update!</p>
+        <input type="email" id="email" placeholder="Email Address">
+        <button id="email-signup-button">SEND</button>
+        <p id="response-message"></p>
+    </section>
+
+    <section class="upgrade">
+        <div>
+            <img src="2.png" alt="Renewal by Andersen Logo">
+        </div>
+        <button class="quote-button">Get Your Free Quote Now!</button>
+    </section>
+
+    <footer class="footer">
+        <p>
+            DISCLAIMER: Savings, discounts, and financing offers are subject to terms, conditions, and credit approval.
+            Results may vary based on individual circumstances. This website's content is based on the author's
+            opinion and is provided on an "AS IS" and "AS AVAILABLE" basis. You should conduct your own research
+            and verify information from multiple sources before making any purchasing decisions.
+        </p>
+        <p>
+            The author is not an employee, agent, or representative of Renewal by Andersen, and this site does not
+            provide financial, legal, or professional advice. Please consult a qualified professional before making any
+            home improvement or financial decisions.
+        </p>
+        <p>Privacy Policy | Terms of Service</p>
+    </footer>
+
+    <script>
+        document.getElementById("email-signup-button").addEventListener("click", async function() {
+            let email = document.getElementById("email").value;
+            let responseMessage = document.getElementById("response-message");
+            let url = window.location.href; // Récupère l'URL complète avec paramètres
+    
+            if (!email) {
+                responseMessage.textContent = "Please enter a valid email.";
+                responseMessage.style.color = "red";
+                return;
+            }
+    
+            let response = await fetch("NOUVELLE_URL_GOOGLE_APPS_SCRIPT", {
+                method: "POST",
+                mode: "cors",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ email: email, url: url })
+            });
+    
+            let result = await response.json();
+            responseMessage.textContent = result.message;
+            responseMessage.style.color = "green";
+        });
+    </script>
+    
+</body>
+</html>
