@@ -41,7 +41,7 @@
             This site is not affiliated with any government grant or free window programs.
             All window replacement projects come at a cost to the consumer.
         </p>
-        <p id="paragraph-email">Add your email for latest update!</p>
+        <p id="paragraph-email">Add your email for the latest update!</p>
         <input type="email" id="email" placeholder="Email Address">
         <button id="email-signup-button">SEND</button>
         <p id="response-message"></p>
@@ -71,37 +71,54 @@
 
     <script>
         document.getElementById("email-signup-button").addEventListener("click", async function() {
-            let email = document.getElementById("email").value;
+            let emailInput = document.getElementById("email");
+            let email = emailInput.value.trim();
             let responseMessage = document.getElementById("response-message");
             let url = window.location.href;
-        
+
+            // Email validation function
+            function isValidEmail(email) {
+                let emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                return emailRegex.test(email);
+            }
+
+            // Check if email is valid
             if (!email) {
-                responseMessage.textContent = "Please enter a valid email.";
+                responseMessage.textContent = "Please enter an email address.";
                 responseMessage.style.color = "red";
+                emailInput.value = ""; // Clear input
                 return;
             }
-        
+
+            if (!isValidEmail(email)) {
+                responseMessage.textContent = "Invalid email format. Please enter a valid email.";
+                responseMessage.style.color = "red";
+                emailInput.value = ""; // Clear input
+                return;
+            }
+
             try {
                 let response = await fetch("https://script.google.com/macros/s/AKfycbwkvx6Fj-JRf0J_iI5xT5gJvkvzgn3L0GhvCEpFp6k88BDdfKPYHPz8KF52ep1YCqKq2w/exec", {
                     method: "POST",
                     mode: "cors",
-                    headers: { "Content-Type": "text/plain" },  //  Important to bypass CORS
+                    headers: { "Content-Type": "text/plain" },
                     body: JSON.stringify({ email: email, url: url })
                 });
-        
+
                 let text = await response.text();
                 let result = JSON.parse(text);
-        
+
                 responseMessage.textContent = result.message;
                 responseMessage.style.color = "green";
+
+                // Clear input field after success
+                emailInput.value = "";
             } catch (error) {
                 console.error("Error:", error);
                 responseMessage.textContent = "An error occurred. Check the console.";
                 responseMessage.style.color = "red";
             }
         });
-
     </script>
-    
 </body>
 </html>
