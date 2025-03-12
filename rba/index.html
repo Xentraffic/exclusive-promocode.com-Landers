@@ -73,25 +73,34 @@
         document.getElementById("email-signup-button").addEventListener("click", async function() {
             let email = document.getElementById("email").value;
             let responseMessage = document.getElementById("response-message");
-            let url = window.location.href; // Récupère l'URL complète avec paramètres
-    
+            let url = window.location.href;
+        
             if (!email) {
                 responseMessage.textContent = "Please enter a valid email.";
                 responseMessage.style.color = "red";
                 return;
             }
-    
-            let response = await fetch("https://script.google.com/macros/s/AKfycbwBw1TDQmqCJsoUq12q055NSBA8EtGy78MHOXLsZKhUgSQcl5WtJ50aErgjlN0iipULcA/exec", {
-                method: "POST",
-                mode: "cors",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ email: email, url: url })
-            });
-    
-            let result = await response.json();
-            responseMessage.textContent = result.message;
-            responseMessage.style.color = "green";
+        
+            try {
+                let response = await fetch("https://script.google.com/macros/s/AKfycbxvVcrbURTQWlxMVV_lz3R6D2sEehWwJ1CSGHqEY1bnlTjgDbgXrgULfLjJey4ttl4xiw/exec", {
+                    method: "POST",
+                    mode: "cors",
+                    headers: { "Content-Type": "text/plain" },  //  Important to bypass CORS
+                    body: JSON.stringify({ email: email, url: url })
+                });
+        
+                let text = await response.text();
+                let result = JSON.parse(text);
+        
+                responseMessage.textContent = result.message;
+                responseMessage.style.color = "green";
+            } catch (error) {
+                console.error("Error:", error);
+                responseMessage.textContent = "An error occurred. Check the console.";
+                responseMessage.style.color = "red";
+            }
         });
+
     </script>
     
 </body>
