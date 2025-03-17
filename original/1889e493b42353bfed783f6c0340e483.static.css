@@ -1,0 +1,25 @@
+body {background-color: #b1babf; margin:0px; padding:0px;
+         font-family: Arial, Helvetica, sans-serif;
+         }
+         a:hover, a:visited, a:link, a:active
+         {
+         text-decoration: none;
+         }
+#ad-disclaimer {padding: 2px 10px; font-size: 19px; color: #1d1d1d; text-align: center; background: #b1babf;}
+.contain-wrap {background-color: #fff; width: 959px; margin: 0 auto;}
+.logo {width: 729px; height: 47px;}
+.logo img {margin-left:40px; margin-top:10px; width: 157px; height: 43px;}
+.sec1 {background-color:#e6e7e8; height: 107px;}
+.sec1-inner {width: 729px; height: 137px; text-align: center;}
+.sec1-inner h2 {color:#c01818;}
+.sec2 {height: 18px;}
+.sec2-inner {width: 729px; text-align: center; height: 18px;}
+.sec2-inner > p{text-align: center; color: #666;}
+.protect-btn {margin:0 auto; width:300px;text-align: center;}
+.protect-btn h2 {background-color:#c01818; height:50px; color: #ffffff;}
+.protect-btn-inner {text-align:left; height:50px; text-decoration:none; vertical-align:middle; display: table-cell;line-height: 50px;}
+@media (max-width:950px) {
+	.contain-wrap {width: 98%}
+}
+
+#footer .container .copyright {text-align: center;}

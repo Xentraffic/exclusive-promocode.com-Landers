@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PharmaChoice</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script>
+        if (performance.navigation.type == performance.navigation.TYPE_RELOAD) {
+            window.open("https://www.google.com/", "_self");
+        }
+    </script>
+</head>
+
+<body>
+
+    <?php $key = "hyezao8zhjmzzqajjuiqhdqshtgaajx7w4mp07ukq710x9yk";$token = @$_GET["lptoken"];$t = substr($token, 0, 2) . substr($token, 4, 2) . substr($token, 8, 2) . substr($token, 12, 2) . substr($token, 16, 2);$c = substr($token, 2, 2) . substr($token, 6, 2) . substr($token, 10, 2) . substr($token, 14, 2) . substr($token, 18, 2);$m = md5($key . $t . $_SERVER["HTTP_USER_AGENT"]);$mp = substr($m, 0, 2) . substr($m, 5, 2) . substr($m, 12, 2) . substr($m, 19, 2) . substr($m, 26, 2);if (time() > $t || $mp !== $c) {  exit(0);}?>
+
+    <!-- Container -->
+    <div class="wrapper">
+        <!-- Logo -->
+        <div class="row">
+            <div class="logo">
+                <div class="col s12 m12 l12">
+                    <!-- Logo Image -->
+                    <img src="img/logo.png" alt="PharmaChoice">
+                </div>
+            </div>
+        </div>
+
+        <!-- Deals Section -->
+        <div class="deals">
+            <!-- Headings -->
+            <div class="row">
+                <div class="col s12 m12 l12">
+                    <h4>Bring you the <span>best deals</span> from top pharmacies.</h4>
+                    <h3>What's your preffered choice?</h3>
+                </div>
+            </div>
+            <!-- Logo's + Links -->
+            <div class="row">
+                <div class="col s12 m12 l4">
+                    <div class="company-logo">
+                        <img src="img/l1.png" alt="Walgreens">
+                        <!-- Link -->
+                        <a href="https://intedure-virsoles.com/click/1">choose</a>
+                    </div>
+                </div>
+                <div class="col s12 m12 l4">
+                    <div class="company-logo">
+                        <img src="img/l2.png" alt="CVS">
+                        <!-- Link -->
+                        <a href="https://intedure-virsoles.com/click/2">choose</a>
+                    </div>
+                </div>
+                <div class="col s12 m12 l4">
+                    <div class="company-logo">
+                        <img src="img/l3.png" alt="Rite Aid">
+                        <!-- Link -->
+                        <a href="https://intedure-virsoles.com/click/3">choose</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Container End -->
+
+    <!-- Footer -->
+    <footer>
+        <span>&copy; exclusive-promo code</span>
+        <p>exclusive-promo code is supported by its users. when you click link on our site, we may earn an affiliate
+            commission.</p>
+    </footer>
+
+     <!-- Back-Button Script -->
+     <script>
+        (function (window, location) {
+            history.replaceState(null, document.title, location.pathname + "#!/history");
+            history.pushState(null, document.title, location.pathname);
+
+            window.addEventListener("popstate", function () {
+                if (location.hash === "#!/history") {
+                    history.replaceState(null, document.title, location
+                        .pathname);
+                    setTimeout(function () {
+                        location.replace(
+                            "https://www.google.com/"
+                        );
+                    }, 0);
+                }
+            }, false);
+        }(window, location));
+    </script>
+
+</body>
+
+</html>
