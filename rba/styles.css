@@ -157,5 +157,7 @@ body {
     .offer-details button {
         padding: 3vw 6vw;
         font-size: 1.5em;
+        position: relative;
+        top: 30px;
     }
 }
