@@ -54,7 +54,7 @@ body {
     color: #59B05D;
 }
 
-.offer-details button {
+.offer-details button, .offer-details .button {
     background-color: #59B05D;
     color: white;
     border: none;
@@ -64,6 +64,7 @@ body {
     display: inline-block;
     border-radius: 12px;
     font-weight: bold;
+    text-decoration: none;
 }
 
 #paragraph-info {
@@ -81,7 +82,7 @@ body {
     text-align: center;
 }
 
-.info button {
+.info button, .info .button {
     background-color: #59B05D;
     color: white;
     border: none;
@@ -89,6 +90,8 @@ body {
     font-size: 1em;
     cursor: pointer;
     border-radius: 10px;
+    text-decoration: none;
+    display: inline-block;
 }
 
 .email-signup input {
@@ -146,6 +149,7 @@ body {
     display: inline-block;
     margin-top: 20px;
     clip-path: polygon(10% 0%, 90% 0%, 100% 50%, 90% 100%, 10% 100%, 0% 50%);
+    text-decoration: none;
 }
 
 @media (max-width: 768px) {
