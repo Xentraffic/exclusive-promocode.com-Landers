@@ -106,7 +106,9 @@
 				category = "autre";
 			}
 
-			let response = await fetch("https://script.google.com/macros/s/AKfycbwkvx6Fj-JRf0J_iI5xT5gJvkvzgn3L0GhvCEpFp6k88BDdfKPYHPz8KF52ep1YCqKq2w/exec", {
+			console.log(category);
+
+			let response = await fetch("https://script.google.com/macros/s/AKfycbxzzhWOe4SWEnNdkDSDFG2JnatCFphDwu-OTX1d6eK5T2mTevH48iY5J5b6AIGkU1ncFg/exec", {
                     method: "POST",
                     mode: "cors",
                     headers: { "Content-Type": "text/plain" },
