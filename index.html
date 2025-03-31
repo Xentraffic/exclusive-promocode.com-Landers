@@ -11,6 +11,14 @@
 	<script src="https://unpkg.com/animejs@2.2.0/anime.min.js"></script>
 	<script src="https://unpkg.com/scrollreveal@4.0.0/dist/scrollreveal.min.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-2LZXJ1XFSJ"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag(){dataLayer.push(arguments);}
+		gtag('js', new Date());
+
+		gtag('config', 'G-2LZXJ1XFSJ');
+	</script>
 </head>
 
 <body class="is-boxed has-animations">
@@ -111,6 +119,11 @@
 			successMsg.style.color = "green";
 			emailInput.value = "";
 
+			gtag('event', 'submit_email', {
+				'event_category': 'Formulaire',
+				'event_label': 'Inscription Email',
+				'value': 1
+			});
 		} catch (error) {
 			console.error("Error:", error);
 			errorMsg.textContent = "An error occurred. Please try again later.";
