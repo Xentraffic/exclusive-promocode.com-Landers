@@ -6,6 +6,14 @@
     <title>Renewal by Andersen</title>
     <link rel="stylesheet" href="styles.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.full.min.js"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-2LZXJ1XFSJ"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag(){dataLayer.push(arguments);}
+		gtag('js', new Date());
+
+		gtag('config', 'G-2LZXJ1XFSJ');
+	</script>
 </head>
 <body>
     <header class="header">
@@ -111,6 +119,12 @@
 
                 responseMessage.textContent = result.message;
                 responseMessage.style.color = "green";
+
+                gtag('event', 'submit_email', {
+                    'event_category': 'Formulaire',
+                    'event_label': 'Inscription Email',
+                    'value': 1
+                });
 
                 // Clear input field after success
                 emailInput.value = "";
