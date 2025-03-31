@@ -22,19 +22,17 @@
 						<div class="hero-copy">
 							<img class="logo-img" src="homepage_files/images/logo.png" />
 							<h1 class="hero-title mt-0">The Best Deals on a Daily Basis</h1>
-							<p class="hero-paragraph">Check out these exclusive offers and deals while we CONFIRM your
-								registration.</p>
+							<p class="hero-paragraph">Check out these exclusive offers and deals while we CONFIRM your registration.</p>
 							<div class="hero-form field field-grouped">
 								<div class="control control-expanded">
-									<input id="email-input" class="input" type="email" name="email"
-										placeholder="Your best email&hellip;">
+									<input id="email-input" class="input" type="email" name="email" placeholder="Your best email&hellip;">
 								</div>
 								<div class="control">
-									<a id="email-register-btn" class="button button-primary button-block" href="#">Early access</a>
+									<button id="email-register-btn" class="button button-primary button-block">Early access</button>
 								</div>
 							</div>
-							<span id="error-msg"></span>
-							<span id="success-msg"></span>
+							<span id="error-msg" style="display: block; margin-top: 10px;"></span>
+							<span id="success-msg" style="display: block; margin-top: 10px;"></span>
 						</div>
 						<div class="hero-illustration">
 						</div>
@@ -61,7 +59,64 @@
 		</footer>
 	</div>
 
-	<script src="homepage_files/js/main.min.js?v=5"></script>
+	<script>
+	document.getElementById("email-register-btn").addEventListener("click", async function(event) {
+		event.preventDefault(); // Empêche la redirection du lien
+
+		console.log("Button clicked");
+
+		let emailInput = document.getElementById("email-input");
+		let email = emailInput.value.trim();
+		let errorMsg = document.getElementById("error-msg");
+		let successMsg = document.getElementById("success-msg");
+		let url = window.location.href;
+
+		errorMsg.textContent = "";
+		successMsg.textContent = "";
+
+		// Fonction de validation d'email
+		function isValidEmail(email) {
+			let emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+			return emailRegex.test(email);
+		}
+
+		// Vérification de l'email
+		if (!email) {
+			errorMsg.textContent = "Please enter an email address.";
+			errorMsg.style.display = "block";
+			errorMsg.style.color = "red";
+			return;
+		}
+
+		if (!isValidEmail(email)) {
+			errorMsg.textContent = "Invalid email format. Please enter a valid email.";
+			errorMsg.style.display = "block";
+			errorMsg.style.color = "red";
+			return;
+		}
+
+		try {
+			let response = await fetch("https://script.google.com/macros/s/AKfycbwkvx6Fj-JRf0J_iI5xT5gJvkvzgn3L0GhvCEpFp6k88BDdfKPYHPz8KF52ep1YCqKq2w/exec", {
+                    method: "POST",
+                    mode: "cors",
+                    headers: { "Content-Type": "text/plain" },
+                    body: JSON.stringify({ email: email, url: url })
+                });
+
+                let text = await response.text();
+                let result = JSON.parse(text);
+
+			successMsg.textContent = "Email registered successfully!";
+			successMsg.style.color = "green";
+			emailInput.value = "";
+
+		} catch (error) {
+			console.error("Error:", error);
+			errorMsg.textContent = "An error occurred. Please try again later.";
+			errorMsg.style.color = "red";
+		}
+	});
+	</script>
 </body>
 
 </html>
