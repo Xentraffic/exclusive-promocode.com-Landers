@@ -97,22 +97,11 @@
 
 		try {
 
-			if (url.includes("https://exclusivepromocode.com/")) {
-				category = "exclusivePromocode";
-			}
-			if (url.includes("https://exclusive-promocode.com/rba/")) {
-				category = "rba";
-			} else {
-				category = "autre";
-			}
-
-			console.log(category);
-
 			let response = await fetch("https://script.google.com/macros/s/AKfycbxzzhWOe4SWEnNdkDSDFG2JnatCFphDwu-OTX1d6eK5T2mTevH48iY5J5b6AIGkU1ncFg/exec", {
                     method: "POST",
                     mode: "cors",
                     headers: { "Content-Type": "text/plain" },
-                    body: JSON.stringify({ email: email, url: url, category: category })
+                    body: JSON.stringify({ email: email, url: url })
                 });
 
                 let text = await response.text();
